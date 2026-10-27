@@ -32,16 +32,17 @@ Criaturas de distintos tipos pelean por turnos hasta que una muere. Todas se man
         ^           ^            ^
         |           |            |
      Kraken     Nigromante    Samurai
-  - tentaculos  - maldicion   - katana
+  - tentaculos  - arma        - arma
+                - danoArma    - danoArma
 ```
 
 ## Criaturas
 
-| Criatura | Ataque | Defensa |
-|---|---|---|
-| **Kraken** | `fuerza * 2` (tentáculos) | Reduce 2 puntos de daño (piel viscosa) |
-| **Nigromante** | `fuerza` (maldición) | Absorbe 25 % del daño (escudo de huesos) |
-| **Samurai** | `fuerza` (katana) | Reduce 3 puntos de daño (armadura) |
+| Criatura | Arma | Ataque | Defensa |
+|---|---|---|---|
+| **Kraken** | Tentáculos (sin arma extra) | `fuerza * 2` | Reduce 2 puntos de daño (piel viscosa) |
+| **Nigromante** | Bastón maldito (+3 de daño) | `fuerza + daño del arma` | Absorbe 25 % del daño (escudo de huesos) |
+| **Samurai** | Katana (+4 de daño) | `fuerza + daño del arma` | Reduce 3 puntos de daño (armadura) |
 
 En todas, el daño recibido nunca es menor a 1 (así la batalla siempre termina).
 
@@ -92,7 +93,7 @@ mvn exec:java
 ## Pruebas unitarias (JUnit 5)
 
 - `CriaturaTest`: `estaViva()`, salud nunca negativa, getters.
-- `SubclasesTest`: ataque y defensa únicos de cada criatura.
+- `SubclasesTest`: ataque (con armas) y defensa únicos de cada criatura.
 - `BatallaTest`: la batalla termina con un ganador y el polimorfismo.
 
 ## Flujo de trabajo en Git
